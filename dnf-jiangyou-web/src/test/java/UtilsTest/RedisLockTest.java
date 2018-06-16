@@ -1,4 +1,4 @@
-package Utils;
+package UtilsTest;
 
 import com.common.redis.DistributedLockHandler;
 import com.common.redis.Lock;

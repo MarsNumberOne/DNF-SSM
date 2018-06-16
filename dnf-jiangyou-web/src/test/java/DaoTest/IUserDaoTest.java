@@ -1,4 +1,4 @@
-package dao;
+package DaoTest;
 
 import com.dnf.bean.Users;
 import com.dnf.dao.UsersDao;

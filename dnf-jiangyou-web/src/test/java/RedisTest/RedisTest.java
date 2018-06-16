@@ -1,4 +1,4 @@
-package dao;
+package RedisTest;
 
 import com.common.redis.RedisUtil;
 import org.junit.Test;
@@ -36,9 +36,6 @@ public class RedisTest {
         //查询mch的value下标为0-2的字符串
         String mch = valueOperations.get("mch", 0, 2);
         String mch1 = (String) valueOperations.get("mch");
-        //删除value
-        caseTemplate.delete("mch");
-
         System.out.println(mch+"--"+mch1);
     }
     @Test
