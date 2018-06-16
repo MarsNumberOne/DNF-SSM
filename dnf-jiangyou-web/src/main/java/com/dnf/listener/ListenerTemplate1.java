@@ -25,12 +25,11 @@ public class ListenerTemplate1 implements MessageListener {
     @Override
     public void onMessage(Message message) {
         System.out.println(message.toString());
-        String msg = new String(message.getBody());
         try {
             //消息格式化 解决编码问题
             String messageJson = new String(message.getBody(), "UTF-8");
             log.info("监听到消息格式化后为：{}", messageJson);
-            Users value = mapper.readValue(msg, new TypeReference<Users>() {
+            Users value = mapper.readValue(messageJson, new TypeReference<Users>() {
             });
             System.out.println("MQ接受消息--1--"+value);
         } catch (IOException e) {

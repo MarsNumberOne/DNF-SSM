@@ -22,9 +22,9 @@ public class ListenerTemplate3 implements MessageListener {
     @Override
     public void onMessage(Message message) {
         System.out.println(message.toString());
-        String msg = new String(message.getBody());
         try {
-            Users value = mapper.readValue(msg, new TypeReference<Users>() {
+            String messageJson = new String(message.getBody(), "UTF-8");
+            Users value = mapper.readValue(messageJson, new TypeReference<Users>() {
             });
             System.out.println("MQ接受消息--3--"+value);
         } catch (IOException e) {

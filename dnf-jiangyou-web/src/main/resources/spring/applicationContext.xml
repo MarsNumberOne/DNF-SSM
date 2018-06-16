@@ -23,7 +23,7 @@
     <import resource="classpath:kafka/kafkaConsumer.xml" />
     <import resource="classpath:kafka/kafkaProducer.xml" />
     <!--dubbo-->
-    <import resource="classpath:dubbo/dubbo-provider.xml" />
+    <!--<import resource="classpath:dubbo/dubbo-provider.xml" />-->
     <!--<import resource="classpath:dubbo/dubbo-consumer.xml" />-->
 
     <!-- **************************** SpringMVC *********************************************** -->
