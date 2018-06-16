@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+    <!--设置超时时间-->
+    <bean id="refConnectionFactory" class="com.rabbitmq.client.ConnectionFactory">
+        <property name="requestedHeartbeat" value="240"/>
+        <property name="connectionTimeout" value="2000"/>
+    </bean>
+
+    <!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成 -->
+    <!--登录的该用户-->
+    <rabbit:admin id="connectAdmin" connection-factory="dnfRabbitmqConnectionFactory"/>
+
+    <!--定义app推送queue 队列1 MSG_DNF -->
+    <rabbit:queue name="MSG_DNF" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin"/>
+    <!--定义app推送queue 队列2 MSG_MCH -->
+    <rabbit:queue name="MSG_MCH" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin"/>
+    <!--定义app推送queue 队列3 MSG_CMD -->
+    <rabbit:queue name="MSG_CMD" durable="true" auto-delete="false" exclusive="false" declared-by="connectAdmin"/>
+
+    <!-- 定义direct exchange，绑定appPushQueue,smsPushQueue,retryMsgQueue" -->
+    <!--key="machunhui123!"是该exchange的密码，生产者的消息想进入该路由，必须有密码才能进入，消费者通过指定该路由，并有路由密码才能够得到消息-->
+    <rabbit:direct-exchange name="exchange_cluster1" durable="true" auto-delete="false" declared-by="connectAdmin">
+        <rabbit:bindings>
+            <rabbit:binding queue="MSG_DNF" key="key1"></rabbit:binding>
+            <rabbit:binding queue="MSG_MCH" key="key2"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+    <!-- exchange有四种消息类型，direct是第一种 -->
+    <!--在direct类型的exchange中，只有这两个routingkey完全相同，exchange才会选择对应的binging进行消息路由。-->
+    <rabbit:direct-exchange name="exchange_cluster2" durable="true" auto-delete="false" declared-by="connectAdmin">
+        <rabbit:bindings>
+            <rabbit:binding queue="MSG_CMD" key="key3"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.JsonMessageConverter"/>
+
+    <rabbit:connection-factory id="dnfRabbitmqConnectionFactory"
+                               host="127.0.0.1"
+                               port="5672"
+                               username="guest"
+                               password="guest"/>
+
+    <!--定义rabbit template用于数据的接收和发送 -->
+    <rabbit:template id="amqpTemplate1"
+                     connection-factory="dnfRabbitmqConnectionFactory"
+                     exchange="exchange_cluster1"
+                     message-converter="jsonMessageConverter"/>
+    <rabbit:template id="amqpTemplate3"
+                     connection-factory="dnfRabbitmqConnectionFactory"
+                     exchange="exchange_cluster2"
+                     message-converter="jsonMessageConverter"/>
+    <!-- app消息接收者 -->
+    <bean id="appMessageReceiver1" class="com.dnf.listener.ListenerTemplate1"></bean>
+    <bean id="appMessageReceiver2" class="com.dnf.listener.ListenerTemplate2"></bean>
+    <bean id="appMessageReceiver3" class="com.dnf.listener.ListenerTemplate3"></bean>
+
+    <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+    <rabbit:listener-container
+                        connection-factory="dnfRabbitmqConnectionFactory"
+                        acknowledge="auto"
+                        prefetch="1">
+        <rabbit:listener queue-names="MSG_DNF"
+                         response-exchange="exchange_cluster1"
+                         ref="appMessageReceiver1"/>
+    </rabbit:listener-container>
+    <!--response-routing-key="key1"-->
+
+    <rabbit:listener-container
+            connection-factory="dnfRabbitmqConnectionFactory"
+            acknowledge="auto"
+            prefetch="1">
+        <rabbit:listener queue-names="MSG_MCH"
+                         response-exchange="exchange_cluster1"
+                         ref="appMessageReceiver2"/>
+    </rabbit:listener-container>
+    <!--response-routing-key="key2"-->
+
+    <rabbit:listener-container
+            connection-factory="dnfRabbitmqConnectionFactory"
+            acknowledge="auto"
+            prefetch="1">
+        <rabbit:listener queue-names="MSG_CMD"
+                         response-exchange="exchange_cluster2"
+                         ref="appMessageReceiver3"/>
+    </rabbit:listener-container>
+    <!--response-routing-key="key3"-->
+</beans>

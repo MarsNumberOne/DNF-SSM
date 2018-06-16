@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dnf-jiangyou-mix"/>
+
+    <!-- 使用zookeeper广播注册中心暴露服务地址 -->
+    <dubbo:registry protocol="zookeeper" address="zookeeper://127.0.0.1:2181"/>
+
+    <!-- dubbo监听中心，负责搜集一些调用时间和次数信息 -->
+    <dubbo:monitor protocol="registry"/>
+
+    <!-- 端口 -->
+    <dubbo:protocol threads="600" name="dubbo" port="20880"/>
+
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.api.txn.apicore.UserCoreFacade" ref="userCoreFacadeImpl" />
+    <!--<bean id="UserCoreFacadeImpl" class="com.txn.facade.UserCoreFacadeImpl"/>-->
+</beans>

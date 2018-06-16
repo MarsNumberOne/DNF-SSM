@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="dnf-jiangyou-web:war">
+    <output-path>$PROJECT_DIR$/dnf-jiangyou-web/target</output-path>
+    <root id="archive" name="dnf-jiangyou-web.war">
+      <element id="artifact" artifact-name="dnf-jiangyou-web:war exploded" />
+    </root>
+  </artifact>
+</component>

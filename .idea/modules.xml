@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dnf-jiangyou-api/dnf-jiangyou-api.iml" filepath="$PROJECT_DIR$/dnf-jiangyou-api/dnf-jiangyou-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dnf-jiangyou-common/dnf-jiangyou-common.iml" filepath="$PROJECT_DIR$/dnf-jiangyou-common/dnf-jiangyou-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dnf-jiangyou-mix.iml" filepath="$PROJECT_DIR$/dnf-jiangyou-mix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dnf-jiangyou-txn/dnf-jiangyou-txn.iml" filepath="$PROJECT_DIR$/dnf-jiangyou-txn/dnf-jiangyou-txn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dnf-jiangyou-web/dnf-jiangyou-web.iml" filepath="$PROJECT_DIR$/dnf-jiangyou-web/dnf-jiangyou-web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="dnf-jiangyou-api" />
+        <module name="dnf-jiangyou-common" />
+        <module name="dnf-jiangyou-dao" />
+        <module name="dnf-jiangyou-txn" />
+        <module name="dnf-jiangyou-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dnf-jiangyou-api" target="1.8" />
+      <module name="dnf-jiangyou-common" target="1.8" />
+      <module name="dnf-jiangyou-dao" target="1.8" />
+      <module name="dnf-jiangyou-mix" target="1.8" />
+      <module name="dnf-jiangyou-txn" target="1.8" />
+      <module name="dnf-jiangyou-web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
