@@ -19,7 +19,6 @@
     <!-- 端口 -->
     <dubbo:protocol threads="600" name="dubbo" port="20880"/>
 
-    <!-- 声明需要暴露的服务接口 -->
+    <!-- 声明需要暴露的服务接口 ref首字母要小写-->
     <dubbo:service interface="com.api.txn.apicore.UserCoreFacade" ref="userCoreFacadeImpl" />
-    <!--<bean id="UserCoreFacadeImpl" class="com.txn.facade.UserCoreFacadeImpl"/>-->
 </beans>

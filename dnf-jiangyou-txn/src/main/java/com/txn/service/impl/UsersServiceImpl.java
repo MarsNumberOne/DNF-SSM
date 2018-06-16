@@ -1,8 +1,8 @@
-package com.dnf.service.impl;
+package com.txn.service.impl;
 
 import com.dnf.bean.Users;
 import com.dnf.dao.UsersDao;
-import com.dnf.service.UsersService;
+import com.txn.service.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;

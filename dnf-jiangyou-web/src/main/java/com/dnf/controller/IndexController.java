@@ -1,13 +1,12 @@
 package com.dnf.controller;
 
 import com.dnf.bean.Users;
-import com.dnf.service.UsersService;
+import com.txn.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * DESCRIPTION:

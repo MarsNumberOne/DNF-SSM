@@ -23,10 +23,10 @@
     <import resource="classpath:kafka/kafkaConsumer.xml" />
     <import resource="classpath:kafka/kafkaProducer.xml" />
     <!--dubbo-->
-    <!--<import resource="classpath:dubbo/dubbo-provider.xml" />-->
-    <!--<import resource="classpath:dubbo/dubbo-consumer.xml" />-->
+    <import resource="classpath:dubbo/dubbo-provider.xml" />
+    <import resource="classpath:dubbo/dubbo-consumer.xml" />
 
-    <!-- **************************** SpringMVC *********************************************** -->
+    <!-- **************************** SpringMVC *************************************** -->
     <!-- 开启SpringMVC注解模式 -->
     <mvc:annotation-driven/>
     <!-- 静态资源(js、image等)的访问 -->
