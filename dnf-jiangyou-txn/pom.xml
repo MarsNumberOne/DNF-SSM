@@ -20,6 +20,10 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>dnf-jiangyou-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dnf-jiangyou-dao</artifactId>
+        </dependency>
         <!--spring单元测试依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>

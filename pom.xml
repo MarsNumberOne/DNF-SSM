@@ -13,6 +13,7 @@
         <module>dnf-jiangyou-web</module>
         <module>dnf-jiangyou-txn</module>
         <module>dnf-jiangyou-common</module>
+        <module>dnf-jiangyou-dao</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -83,6 +84,11 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>dnf-jiangyou-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>dnf-jiangyou-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- *******************模块版本END**************************** -->

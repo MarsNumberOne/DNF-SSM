@@ -21,8 +21,6 @@
     <!-- 配置Mybatis的文件 ，mapperLocations配置**Mapper.xml文件位置，configLocation配置mybatis-config文件位置-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <!--不确定展示先删除-->
-        <!--<property name="typeAliasesPackage" value="com.dnf.bean"/>-->
         <property name="mapperLocations">
             <list>
                 <!--聚合配置

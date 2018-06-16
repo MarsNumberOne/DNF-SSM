@@ -55,9 +55,9 @@
                      exchange="exchange_cluster2"
                      message-converter="jsonMessageConverter"/>
     <!-- app消息接收者 -->
-    <bean id="appMessageReceiver1" class="com.dnf.listener.ListenerTemplate1"></bean>
-    <bean id="appMessageReceiver2" class="com.dnf.listener.ListenerTemplate2"></bean>
-    <bean id="appMessageReceiver3" class="com.dnf.listener.ListenerTemplate3"></bean>
+    <bean id="appMessageReceiver1" class="com.txn.service.listener.ListenerTemplate1"></bean>
+    <bean id="appMessageReceiver2" class="com.txn.service.listener.ListenerTemplate2"></bean>
+    <bean id="appMessageReceiver3" class="com.txn.service.listener.ListenerTemplate3"></bean>
 
     <!-- queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
     <rabbit:listener-container

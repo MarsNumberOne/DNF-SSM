@@ -3,6 +3,7 @@ package com.dnf.service.impl;
 import com.dnf.bean.Users;
 import com.dnf.dao.UsersDao;
 import com.dnf.service.UsersService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
  */
 //注入的时候定义名字，@Resource，@Autowired 引入的时候必须使用对应的命名。
 @Service("uService")
+@Slf4j
 public class UsersServiceImpl implements UsersService {
     @Resource
     private UsersDao usersDao;

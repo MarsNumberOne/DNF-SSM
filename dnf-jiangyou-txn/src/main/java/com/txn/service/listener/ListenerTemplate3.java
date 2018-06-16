@@ -1,4 +1,4 @@
-package com.dnf.listener;
+package com.txn.service.listener;
 
 import com.dnf.bean.Users;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -12,26 +12,22 @@ import java.io.IOException;
 
 /**
  * DESCRIPTION:
- * Create on:2018/3/15.
+ * Create on:2018/3/16.
  *
  * @author MACHUNHUI
  */
 @Service
 @Slf4j
-public class ListenerTemplate1 implements MessageListener {
-
+public class ListenerTemplate3 implements MessageListener {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public void onMessage(Message message) {
-        System.out.println(message.toString());
         try {
-            //消息格式化 解决编码问题
             String messageJson = new String(message.getBody(), "UTF-8");
-            log.info("监听到消息格式化后为：{}", messageJson);
             Users value = mapper.readValue(messageJson, new TypeReference<Users>() {
             });
-            System.out.println("MQ接受消息--1--"+value);
+            System.out.println("测试用ObjectMapper.readValue转格式："+value);
         } catch (IOException e) {
             e.printStackTrace();
         }

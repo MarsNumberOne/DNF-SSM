@@ -35,6 +35,9 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.29" />
           <element id="library" level="project" name="Maven: joda-time:joda-time:2.3" />
+          <element id="archive" name="dnf-jiangyou-dao-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="dnf-jiangyou-dao" />
+          </element>
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.1.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.1.6.RELEASE" />

@@ -1,13 +1,11 @@
-package com.dnf.listener;
+package com.txn.service.listener;
 
+import com.alibaba.fastjson.JSON;
 import com.dnf.bean.Users;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
 import org.springframework.stereotype.Service;
-
-import java.io.IOException;
 
 /**
  * DESCRIPTION:
@@ -16,18 +14,16 @@ import java.io.IOException;
  * @author MACHUNHUI
  */
 @Service
+@Slf4j
 public class ListenerTemplate2 implements MessageListener {
-    private ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public void onMessage(Message message) {
-        System.out.println(message.toString());
         try {
             String messageJson = new String(message.getBody(), "UTF-8");
-            Users value = mapper.readValue(messageJson, new TypeReference<Users>() {
-            });
-            System.out.println("MQ接受消息--2--"+value);
-        } catch (IOException e) {
+            Users users = JSON.parseObject(messageJson, Users.class);
+            System.out.println("测试用JSON.parseObject转格式: "+users);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
